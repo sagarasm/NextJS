@@ -1,0 +1,11 @@
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.custom-checkbox.checked {
+  background-color: #999;
+}

@@ -1,0 +1,44 @@
+.searchbar {
+  display: flex;
+  width: 100%;
+  @include size(margin-top, 50px);
+  &__input {
+    border: 1px solid map-get($color-form, 'gallery');
+    @include size(padding, 8px);
+    @include fontSize(20);
+    @include size(margin-right, 8px);
+    background: map-get($color-form, 'gallery');
+    width: 100%;
+    @include breakpoint(md) {
+      @include size(padding, 18px 28px);
+      width: calc(100% - 155px);
+    }
+    &::placeholder {
+      color: map-get($interim-brand, 'clarity-thundercloud');
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: map-get($interim-brand, 'clarity-thundercloud');
+    }
+    &:-ms-input-placeholder {
+      color: map-get($interim-brand, 'clarity-thundercloud');
+    }
+    &:focus {
+      border-color: map-get($color-form, 'azure-radiance');
+    }
+  }
+  .hero-banner & {
+    margin-top: 0;
+  }
+}
+.search-page-search-box {
+  .searchbar__input {
+    background: map-get($color-form, 'gallery');
+    + .--primary {
+      align-items: center;
+    }
+    @include breakpoint(md){
+      background-color: map-get($color-brand, 'white');
+    }
+  }
+}

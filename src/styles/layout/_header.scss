@@ -1,0 +1,1115 @@
+$ipad: 1024px;
+// Header container structure
+.header {
+  top: 0;
+  width: 100%;
+  position: absolute;
+  z-index: $z-index-header;
+  @include size(padding, 20px 0);
+
+  &.scrolled {
+    background-color: map-get($color-brand, 'white');
+    position: fixed;
+  }
+
+  &__primary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-between;
+
+    @include breakpoint(md) {
+      @include size(padding-bottom, 0);
+    }
+
+    @media only screen and (min-width: $ipad) {
+      @include size(padding, 40px 0 20px);
+      @include size(margin-bottom, 0);
+    }
+
+    @include breakpoint(lg) {
+      @include size(padding-top, 30px);
+    }
+    @include breakpoint(xlg) {
+      @include size(padding-top, 20px);
+    }
+  }
+
+  &__secondary {
+    @include size(min-height, 60px);
+    @include size(margin-bottom, 10px);
+
+    @include breakpoint(md) {
+      margin-bottom: 0;
+      @include size(min-height, 50px);
+    }
+  }
+
+  &__brand {
+    display: block;
+    flex-shrink: 0;
+    @include size(height, 50px);
+    @include size(width, 50px);
+
+    @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+      @include size(height, 50px);
+      @include size(width, 50px);
+    }
+
+    @include breakpoint(lg) {
+      @include size(height, 80px);
+      @include size(width, 80px);
+    }
+
+    svg {
+      display: block;
+      height: 100%;
+      width: 100%;     
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    @media only screen and (min-width: $ipad) {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  .header-search-box {
+    background: map-get($color-brand, 'white');
+    .searchbar {
+      margin-top: 0;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+
+    a {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+
+      svg {
+        fill: map-get($color-brand, 'white');
+      }
+    }
+
+    & > li {
+      display: inline-block;
+
+      &.hover > .subnavigation {
+        display: block;
+      }
+
+      & > .subnavigation {
+        a {
+          display: table;
+          @include size(margin-left, 0);
+          @include size(padding, 2px);
+          width: fit-content;
+        }
+      }
+    }
+  }
+
+  &__cta {
+    display: none;
+
+    @media only screen and (min-width: $ipad) {
+      display: flex;
+    }
+
+    a {
+      @include size(margin-left, 10px);
+    }
+
+    & > a {
+      @include size(padding, 10px 15px);
+    }
+
+    .btn {
+      &.--medium {
+        @include fontSize(12);
+
+        @media only screen and (min-width: $ipad) {
+          @include fontSize(14);
+        }
+      }
+    }
+  }
+
+  .global-location,
+  .search-icon {
+    @include size(padding-bottom, 55px);
+    @include size(margin-bottom, -55px);
+
+    & > a {
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.6;
+      }
+
+      & > svg {
+        @include breakpoint(lg) {
+          @include size(margin-top, 5px);
+        }
+      }
+    }
+  }
+
+  .wrapper {
+    @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+      @include size(padding-left, 30px);
+      @include size(padding-right, 30px);
+    }
+  }
+
+  &__buttonGroup {
+    @media only screen and (min-width: $ipad) {
+      display: flex;
+      .btn {
+        &.--caret {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__cta {
+    .btn {
+      &.--medium {
+        @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+          @include size(padding, 10px);
+          @include fontSize(12);
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+}
+
+// Primary Navigaition
+.navigation {
+  &__primary {
+    @include size(margin-left, 10px);
+    display: none;
+
+    @media only screen and (min-width: $ipad) {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @media only screen and (min-width: $ipad) {
+      @include size(margin-left, 20px);
+    }
+
+    @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+      @include size(margin-left, 10px);
+    }
+
+    & > li {
+      display: inline-block;
+
+      &.hover > .subnavigation {
+        display: block;
+      }
+
+      & > a {
+        @include fontSize(16);
+        @include size(padding, 0 7px);
+        @include size(line-height, 24px);
+        @include size(padding-bottom, 55px);
+        white-space: nowrap;
+        color: map-get($color-brand, 'white');
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover,
+        &:focus {
+          opacity: 0.6;
+        }
+
+        @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+          @include fontSize(14);
+        }
+
+        @include breakpoint(lg) {
+          @include fontSize(16);
+        }
+        @include breakpoint(xlg) {
+          @include fontSize(18);
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+    }
+  }
+
+  &__utility {
+    @include size(margin-left, 20px);
+    @include size(padding, 10px 0);
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+
+    @media only screen and (min-width: $ipad) {
+      display: block;
+    }
+
+    & > li {
+      display: inline-block;
+
+      & > a {
+        color: map-get($color-brand, 'white');
+        @include size(padding, 0 7px);
+        @include fontSize(16);
+        @include size(line-height, 24px);
+        transition: opacity 0.2s ease-in-out;
+        &:hover {
+          opacity: 0.6;
+        }
+        @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+          @include fontSize(14);
+        }
+        @include breakpoint(lg) {
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+    }
+  }
+}
+
+// Scrolled position changes
+.scrolled {
+
+  &.header {
+    @include size(padding, 8px 0);
+  }
+
+  .header {
+    &__primary {
+      @media only screen and (min-width: $ipad) {
+        padding: 0;
+      }
+    }
+
+    &__brand {
+
+      @include breakpoint(lg) {
+        @include size(height, 50px);
+      }
+
+      svg {
+        @include size(width, 50px);
+      }
+    }
+
+    &__cta {
+      .--outline {
+        color: map-get($color-brand, 'deep-azure');
+        border-color: map-get($color-brand, 'deep-azure');
+      }
+      //TODO: Delete this once outline button becomes part of buttons parameters
+      .header__buttonGroup .btn.--secondary {
+        border: 1px solid map-get($color-brand, 'deep-azure');
+      }
+    }
+
+    &__search {
+      a {
+        svg {
+          fill: map-get($color-brand, 'black');
+        }
+      }
+    }
+
+    &__secondary {
+      display: none;
+    }
+  }
+
+  .navigation {
+    &__primary {
+      li {
+        & > a {
+          color: map-get($color-brand, 'black');
+          @include size(padding-bottom, 30px);
+        }
+      }
+    }
+    &__utility {
+      display: none;
+    }
+  }
+
+  .header-title {
+    display: none;
+  }
+
+  .subnavigation {
+    margin-top: 8px;
+  }
+}
+
+// Mobile menu toggler
+.navigation {
+  &__mobile {
+    @include fontSize(10);
+
+    .btn {
+      @media only screen and (min-width: $ipad) {
+        @include size(padding, 5px 15px 5px 25px);
+      }
+    }
+
+    @media only screen and (min-width: $ipad) {
+      display: none;
+    }
+  }
+}
+
+// Header title
+.header-title {
+  @include fontSize(14);
+  color: map-get($color-brand, 'black');
+  line-height: 1.4;
+  text-align: center;
+  @include breakpoint(md) {
+    @include fontSize(16);
+    color: map-get($color-brand, 'white');
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  &.disableMsg {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+}
+
+.header[class*='--bg-dark'] .header-title {
+  color: map-get($color-brand, 'white');
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  &:before {
+    content: '';
+    display: inline-block;
+    @include size(height, 16px);
+    @include size(width, 16px);
+    @include size(margin-right, 4px);
+    vertical-align: middle;
+    filter: invert(91%) sepia(100%) saturate(31%) hue-rotate(253deg) brightness(107%) contrast(100%);
+  }
+
+  &.icon {
+    &__resource {
+      &:before {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.88,.88V6.17c-1.08,.62-1.8,1.77-1.8,3.13,0,.73,.21,1.4,.57,1.97l-1.59,1.59,.88,.88,1.56-1.56c.12,.09,.24,.17,.37,.25v2.7h7.22c2.49,0,4.03-2.4,4.03-4.62V.88H3.88Zm1.83,6.05c1.35,0,2.38,1.02,2.38,2.38s-1.02,2.38-2.38,2.38-2.38-1.02-2.38-2.38,1.02-2.38,2.38-2.38Zm8.17,3.58c0,1.63-1.12,3.38-2.78,3.38H5.12v-1.01c.19,.03,.38,.06,.58,.06,2.03,0,3.62-1.59,3.62-3.62s-1.59-3.62-3.62-3.62c-.2,0-.39,.03-.58,.06V2.13H13.88V10.5Z'/%3E%3C/svg%3E");
+      }
+    }
+
+    &__blog {
+      &:before {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M7,.88v1.25h6.88v1.75H7v1.25h6.88v5.38c0,1.86-1.51,3.38-3.38,3.38H2.12V7H.88V15.13H10.5c2.55,0,4.62-2.08,4.62-4.62V.88H7Z'/%3E%3Cpolygon points='3.06 5.06 3.94 5.94 6.38 3.5 3.94 1.06 3.06 1.94 3.99 2.88 1 2.88 1 4.13 3.99 4.13 3.06 5.06'/%3E%3C/svg%3E");
+      }
+    }
+
+    &__careers {
+      &:before {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.12,3.88V1.88H7v1.25h2.88v.75h-2.88v1.25h6.88v4.38c0,1.87-1.52,3.38-3.38,3.38H2.13v-4.88H.88v6.12H10.5c2.54-.01,4.62-2.08,4.62-4.63V3.88h-4Z'/%3E%3Cpolygon points='2.87 7 4.12 7 4.13 7 4.13 5.12 6.01 5.12 6.01 3.87 4.13 3.87 4.13 1.99 2.88 1.99 2.88 3.87 1 3.87 1 5.12 2.87 5.12 2.87 7'/%3E%3C/svg%3E");
+      }
+    }
+
+    &__customer-login {
+      &:before {
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8.13,.88h-.25C3.98,.94,.94,3.98,.87,7.88v.25c.06,3.89,3.11,6.94,7,7h.26c3.89-.06,6.94-3.11,7-7v-.25c-.06-3.9-3.11-6.94-7-7Zm-1.24,10.26h2.1c1.04,0,2,.57,2.58,1.53-.99,.76-2.2,1.22-3.58,1.22s-2.65-.48-3.65-1.28c.58-.92,1.53-1.47,2.55-1.47Zm5.64,.62c-.77-1.11-1.97-1.79-3.3-1.86v-.02h-2.46c-1.33,.04-2.53,.69-3.35,1.81-.81-1.01-1.3-2.3-1.3-3.69,0-3.24,2.64-5.87,5.88-5.87s5.88,2.64,5.88,5.88c0,1.43-.51,2.73-1.35,3.75Z'/%3E%3Cpath d='M8.13,2.88h-.25c-1.68,.06-2.94,1.32-3,3v.25c.06,1.68,1.32,2.94,3,3h.25c1.68-.06,2.94-1.32,3-3v-.25c-.06-1.68-1.32-2.94-3-3Zm-.12,5.01c-1.04,0-1.88-.85-1.88-1.88s.84-1.88,1.88-1.88,1.88,.84,1.88,1.88-.84,1.88-1.88,1.88Z'/%3E%3C/svg%3E");
+      }
+    }
+  }
+}
+
+// Dark foreground color
+.--fg-light {
+  .header-title {
+    color: map-get($color-brand, 'white');
+  }
+}
+.--fg-dark {
+  .header-title {
+    color: map-get($color-brand, 'black');
+  }
+
+  .navigation {
+    &__primary {
+      li {
+        & > a {
+          color: map-get($color-brand, 'black');
+        }
+      }
+    }
+    &__utility {
+      li {
+        a {
+          color: map-get($color-brand, 'black');
+        }
+      }
+    }
+  }
+
+  .header {
+    &__cta {
+      .--outline {
+        color: map-get($color-brand, 'black');
+        border-color: map-get($color-brand, 'black');
+      }
+    }
+
+    &__search {
+      a {
+        svg {
+          fill: map-get($color-brand, 'black');
+        }
+      }
+    }
+
+    &__buttonGroup {
+      display: flex;
+      flex-wrap: wrap;
+      flex-flow: row;
+    }
+  }
+
+  .nav-link {
+    &:before {
+      content: '';
+      background-size: 16px 16px;
+      filter: none;
+    }
+  }
+}
+
+.--bg-dark {
+  background-color: map-get($color-brand, 'black');
+  @include size(min-height, 120px);
+}
+
+.--bg-light {
+  background-color: map-get($color-brand, 'white');
+  @include size(min-height, 120px);
+}
+
+.--bg-dark.scrolled,
+.--bg-light.scrolled {
+  @include size(min-height, auto);
+}
+
+// Submenu
+.subnavigation {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: map-get($color-brand, 'white');
+  left: 0;
+  top: 100%;
+  @include box-shadow(0px, 4px, 10px, rgba(0, 0, 0, 0.15));
+  @include size(padding, 20px 0);
+
+  &__container {
+    @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+      @include size(padding-left, 67px);
+      @include size(padding-right, 25px);
+    }
+    @include breakpoint(lg) {
+      @include size(padding-left, 110px);
+      @include size(padding-right, 25px);
+    }
+  }
+
+  &__title {
+    color: map-get($color-brand, 'black');
+    @include fontSize(22);
+    font-weight: 600;
+    @include size(margin-bottom, 12px);
+    @include size(margin-top, 15px);
+    a:hover {
+      color: map-get($color-brand, 'deep-azure');
+    }
+
+    &:first-child {
+      @include size(margin-top, 0);
+    }
+  }
+
+  &__item {
+    @include size(margin-bottom, 8px);
+
+    & + .btn {
+      @include size(margin-top, 10px);
+    }
+  }
+
+  &__link {
+    @include link();
+    @include fontSize(16);
+    line-height: 1;
+    font-weight: 400;
+
+    &:visited,
+    &:after {
+      color: map-get($color-brand, 'deep-azure');
+    }
+  }
+
+  &__card {
+    @media only screen and (min-width: $ipad) {
+      @include size(padding, 30px);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+    }
+
+    h2 {
+      @include fontSize(25);
+      @include size(margin-bottom, 20px);
+      @include size(line-height, 30px);
+    }
+
+    p {
+      @include size(line-height, 24px);
+    }
+  }
+}
+
+.mobile-nav {
+  background: map-get($color-brand, 'white');
+  top: 0;
+  right: -60%;
+  width: 0;
+  position: fixed;
+  z-index: $z-index-header + 1;
+  // @include size(padding-bottom, 30px);
+  overflow: auto;
+  overflow-x: hidden;
+  height:100%;
+  opacity: 0;
+
+  @include breakpoint(sm) {
+    right: -80%;
+  }
+
+  @media only screen and (min-width: $ipad) {
+    display: none!important;
+  }
+
+  .navbar {
+    position: relative;
+
+    &__title {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      position: relative;
+      text-overflow: ellipsis;
+      @include size(min-height, 50px);
+      white-space: nowrap;
+      overflow: hidden;
+      @include size(padding, 8px);
+      border-color: map-get($interim-brand, 'lightgray');
+      justify-content: center;
+      a {
+        @include fontSize(20);
+        opacity: 0.4;
+      }
+    }
+    &__primary {
+      display: flex;
+      flex-direction: column;
+
+      & > li {
+        display: flex;
+        opacity: 1;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        @include size(line-height, 20px);
+
+        & > a {
+          @include fontSize(20);
+          @include size(padding, 12px 0 12px 20px);
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          transition: opacity 0.2s ease-in-out;
+          font-weight: $font-weight-semi-bold;
+          width: 100%;
+          position: relative;
+          &:after {
+            content: '';
+            border: 1px solid;
+            border-bottom: none;
+            border-right: none;
+            display: block;
+            @include size(width, 8px);
+            @include size(height, 8px);
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            transform: rotate(135deg);
+            right: 23px;
+            left: auto;
+          }
+        }
+      }
+    }
+
+    &__utility {
+      display: flex;
+      flex-direction: column;
+
+      & > li {
+        display: flex;
+        opacity: 1;
+        flex-wrap: wrap;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        @include size(line-height, 20px);
+
+        & > a {
+          @include size(padding, 12px 0 12px 20px);
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          transition: opacity 0.2s ease-in-out;
+          font-weight: $font-weight-semi-bold;
+          width: 100%;
+        }
+      }
+
+      :first-child {
+        @include size(padding-top, 20px);
+      }
+
+      .nav-link {
+        &:before {
+          content: none;
+        }
+      }
+    }
+
+    &__location {
+      .global-location {
+        display: flex;
+        
+        & > a {
+          @include size(padding, 12px 0 12px 20px);
+          width: 100%;
+          @include size(line-height, 20px);
+          position: relative;
+
+          svg {
+            @include size(width, 15px);
+            @include size(height, 16px);
+            fill: rgba(0, 0, 0, 0.7);
+            pointer-events: none;
+          }
+
+          &:after {
+            content: '';
+            border: 1px solid;
+            border-bottom: none;
+            border-right: none;
+            display: block;
+            @include size(width, 8px);
+            @include size(height, 8px);
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            transform: rotate(135deg);
+            right: 23px;
+            left: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .flyout-heading {
+    display: none;
+  }
+
+  &__search {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    .searchbar__input {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-color: map-get($color-form, 'gallery');
+      border: 0;
+      box-shadow: none;
+      outline: none;
+      @include size(padding, 8px 8px 8px 20px);
+      width: calc(100% - 95px);
+      @include fontSize(16);
+      margin: 0;
+    }
+
+    .btn-search {
+      @include size(padding, 5px);
+      @include size(width, 95px);
+      background-color: transparent;
+      color: map-get($color-form, 'azure-radiance');
+      font-weight: $font-weight-medium;
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
+    }
+
+    .searchbar {
+      @include size(margin, 0);
+    }
+  }
+
+  .subnav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    background-color: map-get($color-brand, 'white');
+    left: 100%;
+    top: 0;
+    z-index: 1;
+    transition: left 0.3s;
+    height: 100%;
+
+    &__wrapper {
+      @include size(padding, 20px);
+    }
+    &.open {
+      left: 0;
+
+      & > div {
+        animation: none;
+      }
+      
+    }
+
+    &__container {
+      @media only screen and (min-width: $ipad) {
+        @include size(padding-left, 110px);
+        @include size(padding-right, 10px);
+      }
+    }
+
+    &__title {
+      display: block;
+      position: relative;
+      text-overflow: ellipsis;
+      white-space: nowrap;      
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      a {
+        align-items: center;
+        @include size(min-height, 50px);
+        @include size(padding, 5px 40px);
+        display: flex;
+        @include fontSize(20);
+        justify-content: center;
+        opacity: 0.4;
+        text-align: center;
+        width: 100%;
+
+        &:before {
+          content: '';
+          border: 1px solid;
+          border-bottom: none;
+          border-right: none;
+          display: block;
+          @include size(width, 9px);
+          @include size(height, 9px);
+          margin: auto;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          transform: rotate(-45deg);
+          left: 20px;
+        }
+      }
+    }
+
+    &__link {
+      @include fontSize(20);
+      @include size(padding, 12px 10px 12px 20px);
+      display: block;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &__privateLink {
+      @include fontSize(20);
+      @include size(padding, 12px 10px 12px 20px);
+      display: block;
+      width: 100%;
+    }
+
+    &__card {
+      @include size(padding, 12px 54px 12px 20px);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      h2 {
+        @include fontSize(25);
+        @include size(margin-bottom, 20px);
+        @include size(line-height, 30px);
+      }
+
+      p {
+        @include size(line-height, 24px);
+      }
+    }
+
+    &__heading {
+      a {
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        @include size(padding, 20px 10px 12px 20px);
+        font-weight: $font-weight-bold;
+        @include fontSize(20);
+        width: 100%;
+      }
+    }
+
+    &__item {
+      position: relative;
+      &.show {
+        ul {
+          display: block;
+        }
+      }
+      ul {
+        display: none;
+      }
+
+      .nav-link {
+        display: block;
+        width: 100%;
+        @include size(padding, 12px 10px 12px 0);
+        @include fontSize(20);
+        @include size(min-height, 50px);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 416.02 416.02'%3E%3Cpath d='M416.01,208c0,13.3-10.7,24-24,24H232.01v160c0,13.25-10.75,24.01-24,24.01s-24-10.71-24-24.01V232H24.01C10.76,232,0,221.26,0,208.01s10.75-24.01,24-24.01H184.01V24C184.01,10.75,194.76,0,208.01,0s24,10.74,24,23.99V184h160c13.3,0,24,10.8,24,24Z'/%3E%3C/svg%3E");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: 1rem 1rem;
+          content: "";
+          @include size(height, 10px);
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 20px;
+          @include fontSize(20);
+          @include size(width, 10px);
+        }
+      }
+
+      &.opened {
+        background-color: map-get($color-form, 'gallery');
+        ul {
+          display: block;
+          @include size(padding-left, 10px);
+        }
+        .nav-link {
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 416.02 416.02'%3E%3Cpath d='M392.01,184H24.01C10.76,184,0,194.8,0,208.01s10.75,23.99,24,23.99H392.01c13.3,0,24-10.7,24-24s-10.7-24-24-24Z' fill='%23005ce6' /%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+
+    &__back {
+      position: relative;
+      @include size(padding, 12px 44px);
+      a {
+        &:before {
+          content: '';
+          border: 1px solid;
+          border-bottom: none;
+          border-right: none;
+          display: block;
+          @include size(width, 9px);
+          @include size(height, 9px);
+          margin: auto;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          transform: rotate(-45deg);
+          left: 20px;
+        }
+      }
+    }
+  }
+
+  .region {
+    &__navItem {
+      display: flex;
+      position: relative;
+      flex-wrap: wrap;
+      color: rgba(0, 0, 0, 0.75);
+      border-color: rgba(0, 0, 0, 0.1);
+      opacity: 1;
+
+      &:after {
+        content: '';
+        border-color: inherit;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    &__heading {
+      @include size(padding, 20px 10px 12px 20px);
+      font-weight: $font-weight-semi-bold;
+      @include fontSize(16);
+    }
+
+    &__link {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      @include size(padding, 12px 10px 12px 20px);
+      flex-grow: 1;
+      flex-basis: 10%;
+
+      &:after {
+        content: none;
+      }
+    }
+  }
+
+  &__btnGroup {
+    @include size(margin, 20px);
+
+    > div {
+      @include size(margin, 10px 0);
+      a {
+        @include size(padding, 10px);
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    @include size(width, 20px);
+    height: 120%;
+    position: absolute;
+    left: auto;
+    top: -10%;
+    z-index: 100;
+    right: 100%;
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    clip-path: polygon(20px 0, 40px 0, 40px 100%, 20px 100%);
+  }
+}
+
+.slide {
+  position: relative;
+  overflow: hidden;
+  right: 80%;
+
+  @include breakpoint(sm) {
+    right: 60%;
+  }
+
+  @media only screen and (min-device-width: $ipad) {
+    right: 0;
+  }
+
+  .mobile-nav {
+    width: 80%;
+    right: 0;
+    opacity: 1;
+    transition: all 0.4s ease;
+
+    @include breakpoint(sm) {
+      width: 60%;
+    }
+  }
+}
+
+@keyframes append-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header-title {
+  a {
+    animation: append-animate 1s linear;
+  }
+}
+
+.header__secondary__enabled {
+  .HeroBanner__wrapper {
+    @include size(padding-top, 160px);
+
+    @include breakpoint(sm) {
+      @include size(padding-top, 140px);
+    }
+
+    @include breakpoint(lg) {
+      padding: 0;
+    }
+  }
+  .HeroBanner__CardWrapper {
+    @include breakpoint(md) {
+      height: calc(100% - 120px);
+    }
+    @media only screen and (min-width: $ipad) and (max-width: map-get($breakpoints, lg)) {
+      height: calc(100% - 190px);
+    }
+    @include breakpoint(lg) {
+      height: calc(100% - 180px);
+    }
+    @include breakpoint(xlg) {
+      height: calc(100% - 170px);
+    }
+  }
+}

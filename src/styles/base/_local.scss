@@ -1,0 +1,687 @@
+// General classes used at component level
+
+.--card {
+  &-border {
+    position: relative;
+
+    &::after {
+      content: ' ';
+      left: 0;
+      bottom: 0;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      position: absolute;
+      width: calc(100% - 32px);
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+}
+
+.--grayscale {
+  filter: grayscale(100%);
+
+  &:hover {
+    filter: none;
+  }
+}
+
+.tile-icon {
+  @include size(min-height, 200px);
+  @include size(padding-bottom, 20px);
+}
+
+.tile-no-icon {
+  @include size(min-height, 100px);
+}
+
+.vertical-tabset {
+  .RRT__container {
+    width: 100%;
+
+    @include breakpoint(md) {
+      display: flex;
+      flex-direction: row;
+    }
+
+    & + .RRT__container {
+      display: block;
+    }
+  }
+
+  .RRT__tabs {
+    @include breakpoint(md) {
+      flex-direction: column;
+    }
+
+    .RRT__tab--selected {
+      background-color: map-get($color-brand, 'deep-azure');
+      border-bottom-color: map-get($color-brand, 'deep-azure');
+      color: map-get($color-brand, 'white');
+
+      &:focus {
+        background-color: map-get($color-brand, 'deep-azure');
+      }
+
+      @include breakpoint(md) {
+        &:hover {
+          @include size(padding, 20px 40px 20px 60px);
+          @include size(margin, 0);
+          background-color: map-get($color-brand, 'deep-azure');
+        }
+      }
+    }
+
+    .vertical-tabset-cta {
+      display: none;
+
+      @include breakpoint(md) {
+        @include size(margin, 20px 30px 0 50px);
+        display: block;
+      }
+    }
+  }
+
+  .RRT__accordion {
+    .RRT__tab {
+      @include size(border-width, 0 0 1px 0);
+      position: relative;
+
+      &:after {
+        @include size(height, 18px);
+        @include size(right, 20px);
+        @include size(width, 10px);
+        content: '';
+        background: url(../../img/caret-right-black.svg) no-repeat;
+        color: map-get($color-brand, 'black');
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+      }
+    }
+
+    .RRT__tab--selected {
+      &:after {
+        background: url(../../img/caret-right-white.svg) no-repeat;
+        transform: translateY(-50%) rotate(-90deg);
+      }
+    }
+
+    .vertical-tabset-cta {
+      display: none;
+    }
+  }
+
+  .divider {
+    @include size(margin, 0 0 30px 0);
+    display: none;
+    border-color: map-get($color-brand, 'clarity-canvas');
+    @include breakpoint(md) {
+      display: block;
+    }
+  }
+
+  .vertical-tabset-cta {
+    @include size(margin, 20px 0);
+    display: block;
+
+    @include breakpoint(md) {
+      display: none;
+    }
+  }
+}
+
+// Changing left/ right overlay in split component
+
+.split-overlay {
+  opacity: 0.5;
+  position: absolute;
+  height: 100%;
+  right: -20px;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+  display: none;
+}
+
+.orientation__left {
+  .overlay {
+    @extend .split-overlay;
+
+    &.left {
+      display: block;
+      @include breakpoint(sm) {
+        right: -30px;
+      }
+      @include breakpoint(md) {
+        width: 100vw;
+        right: 0;
+      }
+    }
+  }
+}
+
+.orientation__right {
+  .overlay {
+    @extend .split-overlay;
+
+    &.right {
+      display: block;
+      @include breakpoint(sm) {
+        right: -30px;
+      }
+      @include breakpoint(md) {
+        width: 100vw;
+        left: 0;
+        right: auto;
+      }
+    }
+  }
+}
+
+// condensed layout for resource listing
+.condensed {
+  background-color: map-get($color-brand, 'clarity-canvas');
+  .resourcelistcard {
+
+    & > p,
+    & > a {
+      display: none;
+    }
+  }
+}
+
+// List Array component
+.--card-3 {
+  > .col {
+    @include breakpoint(md) {
+      -webkit-flex: 1 0 25%;
+      -moz-box-flex: 1;
+      flex: 1 0 25%;
+      max-width: 25%;
+    }
+  }
+}
+
+.--card-4 {
+  > .col {
+    @include breakpoint(md) {
+      -webkit-flex: 1 0 33.3333333333%;
+      -moz-box-flex: 1;
+      flex: 1 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+  }
+}
+
+.--card-6 {
+  > .col {
+    @include breakpoint(md) {
+      -webkit-flex: 1 0 50%;
+      -moz-box-flex: 1;
+      flex: 1 0 50%;
+      max-width: 50%;
+    }
+  }
+}
+
+.--align-left {
+  > div,
+  p {
+    -webkit-justify-content: left;
+    -moz-box-pack: left;
+    justify-content: left;
+  }
+}
+
+.--align-center {
+  > div,
+  p {
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+  }
+}
+
+// Nested Locations Dropdown component
+.country-flags {
+  background: map-get($color-brand, 'white');
+  color: map-get($color-brand, 'black');
+  display: block;
+  @include size(height, 30px);
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+  @include size(width, 45px);
+
+  &:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23000' d='M256,0C397.4,0,512,114.6,512,256s-114.6,256-256,256S0,397.4,0,256,114.6,0,256,0Zm0,480c16.7,0,40.4-14.4,61.9-57.3,9.9-19.8,18.2-44.6,23.2-70.7H170c5.9,26.1,14.2,50.9,24.1,70.7,21.5,42.9,45.2,57.3,61.9,57.3h0Zm-91.7-160h183.4c2.8-20.2,4.3-41.7,4.3-64s-1.5-43.8-4.3-64H164.3c-2.8,20.2-4.3,41.7-4.3,64s1.5,43.8,4.3,64h0Zm176.8-160c-5-27-13.3-50.9-23.2-70.71-21.5-42.92-45.2-57.29-61.9-57.29s-40.4,14.37-61.9,57.29c-9.9,19.81-18.2,43.71-24.1,70.71h171.1Zm38,32c3.5,20.5,4.9,41.9,4.9,64s-1.4,43.5-4.9,64h91.6c6.1-20.3,9.3-41.8,9.3-64s-3.2-43.7-9.3-64h-91.6Zm-51.6-148.34c21,28.33,37.6,68.74,47.2,116.34h83.7c-25.8-54.5-73.1-96.88-130.9-116.34h0Zm-143,0c-57.8,19.46-105.06,61.84-130.94,116.34h83.74c9.6-47.6,26.2-88.01,47.2-116.34h0ZM32,256c0,22.2,3.24,43.7,9.28,64h90.72c-2.6-20.5-4-41.9-4-64s1.4-43.5,4-64H41.28c-6.04,20.3-9.28,41.8-9.28,64h0Zm426.4,96h-83.7c-9.6,47.6-26.2,88-47.2,116.3,57.8-19.4,105.1-61.8,130.9-116.3Zm-321.1,0H53.56c25.88,54.5,73.14,96.9,130.94,116.3-21-28.3-37.6-68.7-47.2-116.3h0Z'%3E%3C/path%3E%3C/svg%3E");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    display: block;
+    @include size(height, 30px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all $transition-speed;
+    @include size(width, 45px);
+    z-index: 1;
+  }
+
+}
+.--flags {
+  &-argentina {
+    &:before {
+      background-image: url(../../img/flags/argentina.svg);
+    }
+  }
+  &-australia {
+    &:before {
+      background-image: url(../../img/flags/australia.svg);
+    }
+  }
+  &-austria {
+    &:before {
+      background-image: url(../../img/flags/austria.svg);
+    }
+  }
+  &-belgium {
+    &:before {
+      background-image: url(../../img/flags/belgium.svg);
+    }
+  }
+  &-brazil {
+    &:before {
+      background-image: url(../../img/flags/brazil.svg);
+    }
+  }
+  &-canada {
+    &:before {
+      background-image: url(../../img/flags/canada.svg);
+    }
+  }
+  &-chile {
+    &:before {
+      background-image: url(../../img/flags/chile.svg);
+    }
+  }
+  &-china {
+    &:before {
+      background-image: url(../../img/flags/china.svg);
+    }
+  }
+  &-colombia {
+    &:before {
+      background-image: url(../../img/flags/colombia.svg);
+    }
+  }
+  &-czech-republic {
+    &:before {
+      background-image: url(../../img/flags/czech-republic.svg);
+    }
+  }
+  &-denmark {
+    &:before {
+      background-image: url(../../img/flags/denmark.svg);
+    }
+  }
+  &-egypt {
+    &:before {
+      background-image: url(../../img/flags/egypt.svg);
+    }
+  }
+  &-finland {
+    &:before {
+      background-image: url(../../img/flags/finland.svg);
+    }
+  }
+  &-france {
+    &:before {
+      background-image: url(../../img/flags/france.svg);
+    }
+  }
+  &-germany {
+    &:before {
+      background-image: url(../../img/flags/germany.svg);
+    }
+  }
+  &-hong-kong {
+    &:before {
+      background-image: url(../../img/flags/hong-kong.svg);
+    }
+  }
+  &-india {
+    &:before {
+      background-image: url(../../img/flags/india.svg);
+    }
+  }
+  &-indonesia {
+    &:before {
+      background-image: url(../../img/flags/indonesia.svg);
+    }
+  }
+  &-ireland {
+    &:before {
+      background-image: url(../../img/flags/ireland.svg);
+    }
+  }
+  &-italy {
+    &:before {
+      background-image: url(../../img/flags/italy.svg);
+    }
+  }
+  &-japan {
+    &:before {
+      background-image: url(../../img/flags/japan.svg);
+    }
+  }
+  &-luxembourg {
+    &:before {
+      background-image: url(../../img/flags/luxembourg.svg);
+    }
+  }
+  &-malaysia {
+    &:before {
+      background-image: url(../../img/flags/malaysia.svg);
+    }
+  }
+  &-mexico {
+    &:before {
+      background-image: url(../../img/flags/mexico.svg);
+    }
+  }
+  &-netherlands {
+    &:before {
+      background-image: url(../../img/flags/netherlands.svg);
+    }
+  }
+  &-new-zealand {
+    &:before {
+      background-image: url(../../img/flags/new-zealand.svg);
+    }
+  }
+  &-norway {
+    &:before {
+      background-image: url(../../img/flags/norway.svg);
+    }
+  }
+  &-philippines {
+    &:before {
+      background-image: url(../../img/flags/philippines.svg);
+    }
+  }
+  &-poland {
+    &:before {
+      background-image: url(../../img/flags/poland.svg);
+    }
+  }
+  &-portugal {
+    &:before {
+      background-image: url(../../img/flags/portugal.svg);
+    }
+  }
+  &-russia {
+    &:before {
+      background-image: url(../../img/flags/russia.svg);
+    }
+  }
+  &-saudi-arabia {
+    &:before {
+      background-image: url(../../img/flags/saudi-arabia.svg);
+    }
+  }
+  &-singapore {
+    &:before {
+      background-image: url(../../img/flags/singapore.svg);
+    }
+  }
+  &-south-africa {
+    &:before {
+      background-image: url(../../img/flags/south-africa.svg);
+    }
+  }
+  &-south-korea {
+    &:before {
+      background-image: url(../../img/flags/south-korea.svg);
+    }
+  }
+  &-spain {
+    &:before {
+      background-image: url(../../img/flags/spain.svg);
+    }
+  }
+  &-sri-lanka {
+    &:before {
+      background-image: url(../../img/flags/sri-lanka.svg);
+    }
+  }
+  &-sweden {
+    &:before {
+      background-image: url(../../img/flags/sweden.svg);
+    }
+  }
+  &-switzerland {
+    &:before {
+      background-image: url(../../img/flags/switzerland.svg);
+    }
+  }
+  &-taiwan {
+    &:before {
+      background-image: url(../../img/flags/taiwan.svg);
+    }
+  }
+  &-thailand {
+    &:before {
+      background-image: url(../../img/flags/thailand.svg);
+    }
+  }
+  &-tunisia {
+    &:before {
+      background-image: url(../../img/flags/tunisia.svg);
+    }
+  }
+  &-turkey {
+    &:before {
+      background-image: url(../../img/flags/turkey.svg);
+    }
+  }
+  &-united-arab-emirates {
+    &:before {
+      background-image: url(../../img/flags/united-arab-emirates.svg);
+    }
+  }
+  &-united-kingdom {
+    &:before {
+      background-image: url(../../img/flags/united-kingdom.svg);
+    }
+  }
+  &-united-states {
+    &:before {
+      background-image: url(../../img/flags/united-states.svg);
+    }
+  }
+  &-vietnam {
+    &:before {
+      background-image: url(../../img/flags/vietnam.svg);
+    }
+  }
+}
+
+.locations-content {
+  > div {
+    display: none;
+    &.show {
+      display: block;
+    }
+  }
+}
+
+// Nested CTA Component
+.nestedCta__link {
+  &.--tertiary + .text-block {
+    @include size(margin-top, 0);
+  }
+}
+
+.fg--mobile.--fg-light[class*='--bg-white'] {
+  color: map-get($color-brand, 'black');
+}
+
+.fg--mobile.--fg-light:not([class*='--bg']) {
+  color: map-get($color-brand, 'black');
+  @include breakpoint(md) {
+    color: map-get($color-brand, 'white');
+  }
+}
+
+// Hero Banner tertiary button color in mobile
+.fg--mobile.--fg-light {
+  .HeroBanner__groupBtn {
+    .--tertiary.--color-white {
+      color: map-get($color-brand, 'deep-azure');
+      &::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38.6 32.4'%3E%3Cpath fill='%23005CE6' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+      }
+      @include breakpoint(md) {
+        color: map-get($color-brand, 'white');
+        &::after {
+          background-image: url("data: image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38.6 32.4' %3E%3Cpath fill='%23FFFFFF' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z' /%3E%3C/svg%3E");
+        }
+      }
+    }
+  }
+}
+
+.HeroBanner__wrapper {
+  .--card-bg {
+    @include breakpoint(md) {
+      padding: 50px;
+    }
+  }
+  &.--hero-condensed {
+    @include size(min-height, 550px);
+  }
+}
+
+.HeroBanner__CardWrapper {
+  .--card-bg-wrapper {
+    @include breakpoint(md) {
+      padding-left: 0;
+    }
+  }
+}
+
+/* Search-box */
+.flyout-heading {
+  @include size(margin-bottom, 8px);
+  @include fontSize(22.4);
+  font-weight: $font-weight-semi-bold;
+}
+
+.nested-search-box {
+  .searchbar {
+    margin-top: 0;
+  }
+}
+
+.btn-search {
+  @include size(padding, 8px);
+  background-color: transparent;
+  color: map-get($color-form, 'azure-radiance');
+  font-weight: $font-weight-medium;
+  width: 30%;
+  @include breakpoint(md) {
+    @include size(padding, 18px 28px);
+  }
+  &.--caret {
+    &:after {
+      display: none;
+
+      @media only screen and (min-width: 1024px) {
+        display: flex;
+      }
+    }
+  }
+}
+
+// CTA strip remove paragraph margin
+.ctastrip{
+  .text-block{
+    p{
+      &:last-child{
+        @include size(margin-bottom, 0);
+      }
+    }
+    + .btn{
+      @include size(margin-top, 20px);
+    }
+  }
+}
+
+// Accordion Container Css
+.accordion-title {
+  @include size(margin-bottom, 0);
+  &:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 416.02 416.02'%3E%3Cpath d='M416.01,208c0,13.3-10.7,24-24,24H232.01v160c0,13.25-10.75,24.01-24,24.01s-24-10.71-24-24.01V232H24.01C10.76,232,0,221.26,0,208.01s10.75-24.01,24-24.01H184.01V24C184.01,10.75,194.76,0,208.01,0s24,10.74,24,23.99V184h160c13.3,0,24,10.8,24,24Z'/%3E%3C/svg%3E");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 1.5rem 1.5rem;
+    content: "";
+    display: block;
+    @include size(height, 15px);
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    @include size(width, 15px);
+  }
+}
+
+.open {  
+  .accordion-title {
+    &:before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 416.02 416.02'%3E%3Cpath d='M392.01,184H24.01C10.76,184,0,194.8,0,208.01s10.75,23.99,24,23.99H392.01c13.3,0,24-10.7,24-24s-10.7-24-24-24Z'/%3E%3C/svg%3E");
+    }
+  }         
+
+  > div {
+    animation: sweep .5s ease-in-out;     
+  }
+}
+
+.--fg-light {
+  .accordion-title {
+    &:before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 416.02 416.02'%3E%3Cpath  fill='%23ffffff' d='M416.01,208c0,13.3-10.7,24-24,24H232.01v160c0,13.25-10.75,24.01-24,24.01s-24-10.71-24-24.01V232H24.01C10.76,232,0,221.26,0,208.01s10.75-24.01,24-24.01H184.01V24C184.01,10.75,194.76,0,208.01,0s24,10.74,24,23.99V184h160c13.3,0,24,10.8,24,24Z'/%3E%3C/svg%3E");
+    }
+  }
+
+  .open {  
+    .accordion-title {
+      &:before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 416.02 416.02'%3E%3Cpath fill='%23ffffff'  d='M392.01,184H24.01C10.76,184,0,194.8,0,208.01s10.75,23.99,24,23.99H392.01c13.3,0,24-10.7,24-24s-10.7-24-24-24Z'/%3E%3C/svg%3E");
+      }
+    }  
+  }
+}
+
+@keyframes sweep {
+  0%{
+      opacity:0;
+      margin-top:-10px;
+  }
+  100%{
+      opacity:1;
+      margin-top:0;
+  }
+}

@@ -1,0 +1,505 @@
+.btn {
+  background: transparent;
+  @include size(border-radius, 10px);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: $font-secondary;
+  font-weight: $font-weight-semi-bold;
+  @include size(padding, 10px 30px);
+  text-decoration: none;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.5;
+
+  &.--medium.--caret {
+    @include size(padding, 10px 15px);
+    @include fontSize(14);
+    &:after {
+      @include size(width, 20px);
+      @include size(height, 13px);
+      @include size(margin-left, 10px);
+    }
+  }
+
+  &.--primary {
+    background: map-get($color-brand, 'deep-azure');
+    color: map-get($color-brand, 'white');
+
+    &:hover {
+      background: map-get($color-brand, 'azure');
+
+      &:after{
+        transform: translateX(5px);
+      }
+    }
+
+
+    &:focus {
+      background: map-get($interim-brand, 'cobalt');
+      outline: none;
+
+      &:after{
+        transform: translateX(5px);
+      }
+    }
+
+    &:focus-visible{
+      outline: none;
+    }
+
+    @each $item, $color in $color-brand {
+      &.--color-#{$item} {
+        background: $color;
+      }
+    }
+    @each $item, $color in $color-brand-btn-hover {
+      &.--color-#{$item} {
+        &:hover {
+          background: $color;
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand-btn-focus {
+      &.--color-#{$item} {
+        &:focus {
+          background: $color;
+        }
+      }
+    }
+  }
+
+  &.--secondary {
+    background: map-get($color-brand, 'white');
+    color: map-get($color-brand, 'deep-azure');
+
+    &:hover {
+      color: map-get($color-brand, 'azure');
+      &:after{
+        transform: translateX(5px);
+      }
+    }
+
+    &:focus {
+      color: map-get($color-brand, 'white');
+      background: map-get($color-brand, 'azure');
+      outline: none;
+
+      &:after{
+        transform: translateX(5px);
+      }
+    }
+
+    &:focus-visible{
+      outline: none;
+    }
+    
+
+    &.--caret {
+      &:after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+            map-get($color-brand, 'deep-azure')
+          ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+      }
+      &:hover {
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+              map-get($color-brand, 'azure')
+            ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+        }
+      }
+      &:focus {
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+              map-get($color-brand, 'white')
+            ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+        }
+      }
+    }
+
+    &.--color-black,
+    &.--color-night {
+      &:hover {
+        color: map-get($color-brand, 'deep-azure');
+      }
+
+      &.--caret {
+        &:hover {
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+                map-get($color-brand, 'deep-azure')
+              ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand {
+      &.--color-#{$item} {
+        color: $color;
+        &.--caret {
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+                $color
+              ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand-btn-secondary-hover {
+      &.--color-#{$item} {
+        &:hover {
+          background: $color;
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand-btn-secondary-focus {
+      &.--color-#{$item} {
+        &:focus {
+          background: $color;
+          color: map-get($color-brand, 'white');
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+                map-get($color-brand, 'white')
+              ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+
+  }
+
+  &.--tertiary {
+    background: transparent;
+    color: map-get($color-brand, 'deep-azure');
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+
+    &:hover {
+      color: map-get($color-brand, 'azure');
+      &:after{
+        transform: translateX(5px);
+      }
+    }
+
+    &:before {
+      background: map-get($interim-brand, 'cobalt');
+      border: none;
+      @include size(bottom, 10px);
+      content: "";
+      display: block;
+      left: 0;
+      height: 1px;
+      position: absolute;
+      transition: width .3s ease-in-out;
+      width: 0;
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+
+      &:before {
+        width: 100%;
+      }
+    }
+
+    &.--caret {
+      &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38.6 32.4'%3E%3Cpath fill='" + encodeColor(
+            map-get($color-brand, 'deep-azure')
+           ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+          @include size(height, 10px);
+          @include size(margin-left, 10px);
+        }
+      &:hover {
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38.6 32.4'%3E%3Cpath fill='" + encodeColor(
+              map-get($color-brand, 'azure')
+            ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+        }
+      }
+      &:hover {
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38.6 32.4'%3E%3Cpath fill='" + encodeColor(
+            map-get($color-brand, 'azure')
+           ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+        }
+      }
+
+      &:focus {
+        &:before {
+          width: calc(100% - 33px);
+        }
+      }
+
+
+      &.--inline {
+        display: inline-block;
+        text-align: left;
+        &:after {
+          display: inline-block;
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand {
+      &.--color-#{$item} {
+        color: $color;
+        &.--caret {
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38.6 32.4'%3E%3Cpath fill='" + encodeColor(
+                  $color
+                 ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+    @each $item, $color in $color-brand-btn-hover {
+      &.--color-#{$item} {
+        &:hover {
+          color: $color;
+        }
+        &.--caret {
+          &:hover {
+            &:after {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38.6 32.4'%3E%3Cpath fill='" + encodeColor(
+                  $color
+                 ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+              }
+          }
+        }
+      }
+    }
+  }
+
+  &.--outline {
+    border: 1px solid map-get($color-brand, 'deep-azure');
+    background: transparent;
+    color: map-get($color-brand, 'deep-azure');
+
+    &:hover {
+      background: map-get($color-brand, 'azure');
+      color: map-get($color-brand, 'white');
+      border-color: map-get($color-brand, 'azure');
+      &:after{
+        transform: translateX(5px);
+      }
+    }
+
+    &:focus {
+      background: map-get($interim-brand, 'cobalt');
+      color: map-get($color-brand, 'white');
+      outline: none;
+
+      &:after{
+        transform: translateX(5px);
+      }
+    }
+
+    &:focus-visible{
+      outline: none;
+    }
+
+    &.--caret {
+      &:after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+            map-get($color-brand, 'deep-azure')
+          ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+      }
+
+      &:hover {
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+              map-get($color-brand, 'white')
+            ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+        }
+      }
+
+      &:focus {
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+              map-get($color-brand, 'white')
+            ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand {
+      &.--color-#{$item} {
+        border-color: $color;
+        color: $color;
+        &.--caret {
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+                $color
+              ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand-btn-hover {
+      &.--color-#{$item} {
+        &:hover {
+          background: $color;
+          color: map-get($color-brand, 'white');
+        }
+        &.--caret {
+          &:hover {
+            &:after {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+                  map-get($color-brand, 'white')
+                ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+            }
+          }
+        }
+      }
+    }
+
+    @each $item, $color in $color-brand-btn-focus {
+      &.--color-#{$item} {
+        &:focus {
+          background: $color;
+          color: map-get($color-brand, 'white');
+        }
+        &.--caret {
+          &:focus {
+            &:after {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+                  map-get($color-brand, 'white')
+                ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+            }
+          }
+        }
+      }
+    }
+
+    // override for outline using white
+    &.--color-white {
+      &:hover {
+        background: map-get($color-brand, 'white');
+        color: map-get($color-brand, 'deep-azure');
+      }
+      &.--caret {
+        &:hover {
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+                map-get($color-brand, 'deep-azure')
+              ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+          }
+        }
+      }
+    }
+
+    &.--contrast {
+      border-color: map-get($color-brand, 'white');
+      color: map-get($color-brand, 'white');
+
+      &.--caret {
+        &:after {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+              map-get($color-brand, 'white')
+            ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E");
+        }
+      }
+    }
+  }
+
+  // icons
+  &.--caret {
+    display: inline-flex;
+    align-items: center;
+
+    &:after {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 14.4'%3E%3Cpath fill='" + encodeColor(
+            map-get($color-brand, 'white')
+          ) + "' d='M15.85,.29l5.5,6.22c.34,.38,.34,1,0,1.38l-5.5,6.22c-.34,.38-.88,.38-1.22,0-.34-.38-.34-1,0-1.38l4.02-4.55H0v-1.96H18.65L14.63,1.67c-.34-.38-.34-1,0-1.38,.34-.38,.88-.38,1.22,0Z'/%3E%3C/svg%3E")
+        no-repeat 0 0;
+      background-size: cover;
+      content: '';
+      display: flex;
+      flex-shrink: 0;
+      @include size(height, 15px);
+      @include size(margin-left, 15px);
+      @include size(width, 23px);
+      transition: transform .3s ease-in-out;
+
+    }
+  }
+
+  // download
+  &.--download {
+    align-items: center;
+    display: inline-flex;
+    text-align: center;
+    width: 100%;
+
+    @include breakpoint(sm) {
+      width: auto;
+    }
+
+    &:after {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 17'%3E%3Cpath d='M14.41 10.25l-6.22 5.5c-.38.34-1 .34-1.38 0l-6.22-5.5a.795.795 0 0 1 0-1.22c.38-.34 1-.34 1.38 0l4.55 4.02V.4h1.96v12.65l4.55-4.02c.38-.34 1-.34 1.38 0 .38.34.38.88 0 1.22z' fill='%23fff' fill-rule='evenodd'/%3E%3C/svg%3E");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 16px 14px;
+      border-bottom: 1px solid map-get($color-brand, 'white');
+      content: "";
+      display: block;
+      @include size(height, 16px);
+      @include size(margin-left, 15px);
+      @include size(width, 16px);
+    }
+
+    &:hover {
+      &:after {
+        transform: none;
+      }
+    }
+
+  }
+}
+
+.button-group {
+  @include size(margin, -5px -5px 0 -5px);
+
+  .btn {
+    @include size(margin, 5px);
+  }
+
+  &.--fluid {
+    margin: 0;
+
+    .btn {
+      justify-content: center;
+      @include size(margin, 0 0 10px 0);
+
+      width: 100%;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Disable bg for buttons in news list
+.btn{
+  &--mediacoverage,
+  &--pressrelease,
+  &--bulletins,
+  &--casestudies,
+  &--whitepapers,
+  &--datasheets,
+  &--demos,
+  &--pastwebinars,
+  &--upcomingwebinars,
+  &--infographic,
+  &--viewallevents{
+    background: none;
+  }
+}

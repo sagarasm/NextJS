@@ -1,0 +1,234 @@
+// Breakpoint mixins
+
+@mixin breakpoint($viewport) {
+  @if $viewport == sm {
+    @media (min-width: (map-get($breakpoints, sm) + 1)) {
+      @content;
+    }
+  } @else if $viewport == md {
+    @media (min-width: (map-get($breakpoints, md) + 1)) {
+      @content;
+    }
+  } @else if $viewport == lg {
+    @media (min-width: (map-get($breakpoints, lg) + 1)) {
+      @content;
+    }
+  } @else if $viewport == xlg {
+    @media (min-width: (map-get($breakpoints, xlg) + 1)) {
+      @content;
+    }
+  }
+}
+
+@mixin size($property, $values) {
+  $px: ();
+  $rem: ();
+
+  @each $value in $values {
+    @if $value == 0 or $value == auto {
+      $rem: append($rem, $value);
+    } @else {
+      $unit: unit($value);
+      $val: parseInt($value);
+
+      @if $unit == 'px' {
+        $rem: append($rem, ($val * 0.1 + rem));
+      }
+
+      @if $unit == 'rem' {
+        $px: append($px, ($val * 10 + px));
+      }
+    }
+  }
+
+  @if $px == $rem {
+    #{$property}: $px;
+  } @else {
+    // #{$property}: $px;
+    #{$property}: $rem;
+  }
+}
+
+// Font-size mixins
+@mixin fontSize($sizeValue) {
+  font-size: ($sizeValue * 0.1) + rem;
+}
+
+// Screenreader mixins
+@mixin screenreader {
+  border: none;
+  clip: rect(0px, 0px, 0px, 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Box Shadow mixins
+
+@mixin box-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $color) {
+  box-shadow: $x-axis $y-axis $blur $color;
+}
+
+@mixin transition($transition) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+//Headings
+@mixin heading {
+  font-weight: $font-weight-semi-bold;
+  font-family: $heading-font-family;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+@mixin heading-1 {
+  @include heading;
+  @include fontSize(36);
+  @include size(line-height, 44px);
+  @include size(margin-bottom, 30px);
+
+  @include breakpoint(md) {
+    @include fontSize(46);
+    @include size(line-height, 56px);
+  }
+}
+@mixin heading-2 {
+  @include heading;
+  @include fontSize(30);
+  @include size(line-height, 40px);
+  @include size(margin-bottom, 25px);
+
+  @include breakpoint(md) {
+    @include fontSize(36);
+    @include size(line-height, 44px);
+  }
+}
+@mixin heading-3 {
+  @include heading;
+  @include fontSize(24);
+  @include size(line-height, 32px);
+  @include size(margin-bottom, 20px);
+
+  @include breakpoint(md) {
+    @include fontSize(30);
+    @include size(line-height, 40px);
+  }
+}
+@mixin heading-4 {
+  @include heading;
+  @include fontSize(18);
+  @include size(line-height, 24px);
+  @include size(margin-bottom, 15px);
+
+  @include breakpoint(md) {
+    @include fontSize(24);
+    @include size(line-height, 32px);
+  }
+}
+@mixin heading-5 {
+  @include heading;
+  @include fontSize(16);
+  @include size(line-height, 20px);
+  @include size(margin-bottom, 10px);
+
+  @include breakpoint(md) {
+    @include fontSize(18);
+    @include size(line-height, 24px);
+  }
+}
+@mixin heading-6 {
+  @include heading;
+  @include fontSize(14);
+  @include size(line-height, 18px);
+  @include size(margin-bottom, 10px);
+
+  @include breakpoint(md) {
+    @include fontSize(16);
+    @include size(line-height, 20px);
+  }
+}
+
+//Body-Paragraph
+@mixin body {
+  font-weight: $font-weight-normal;
+  font-family: $font-primary;
+}
+@mixin body-1 {
+  @include body;
+  @include fontSize(20);
+  @include size(line-height, 28px);
+
+  @include breakpoint(md) {
+    @include fontSize(24);
+    @include size(line-height, 36px);
+  }
+}
+@mixin body-2 {
+  @include body;
+  @include fontSize(18);
+  @include size(line-height, 28px);
+
+  @include breakpoint(md) {
+    @include fontSize(20);
+    @include size(line-height, 32px);
+  }
+}
+@mixin body-3 {
+  @include body;
+  @include fontSize(16);
+  @include size(line-height, 24px);
+
+  @include breakpoint(md) {
+    @include fontSize(18);
+    @include size(line-height, 28px);
+  }
+}
+@mixin body-4 {
+  @include body;
+  @include fontSize(14);
+  @include size(line-height, 20px);
+
+  @include breakpoint(md) {
+    @include fontSize(16);
+    @include size(line-height, 24px);
+  }
+}
+
+@mixin link{
+  cursor: pointer;
+  display: inline-flex;
+  font-family: $font-primary;
+  color: map-get($color-brand, 'deep-azure');
+  position: relative;
+  &:after{
+    background: none;
+    border-radius: 2px;
+    content: "";
+    height: calc(100% + 4px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(-2px) translateY(-2px);
+    width: calc(100% + 4px);
+  }
+  &:hover {
+    color: map-get($color-brand, 'azure');
+
+    &:after {
+      background: rgba(75,147,255,.2);
+    }
+   
+  }
+  &:focus {
+    color: map-get($interim-brand, 'cobalt');
+  }
+  &:visited {
+    color: map-get($interim-brand, 'light-cyan-blue');
+  }
+}

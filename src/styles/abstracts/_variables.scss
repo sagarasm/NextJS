@@ -1,0 +1,201 @@
+// colors
+$interim-brand:(
+  'empathy': #F4C2C2,
+  'friendship': #94E0E0,
+  'positivity': #FEAE76,
+  'optimism': #F5CD66,
+  'knowledge': #5C84E2,
+  'inclusion': #B489EC,
+  'gray': #7e7e7e,
+  'knowledge-1': #789CF1,
+  'lightgray': #b7b7ba,
+  'cobalt': #004AB9,
+  'light-cyan-blue':#5F92DE,
+  'athens-gray': #efeff0,
+  'silver': #cacaca,
+  'clarity-thundercloud': #424652,
+  'cornflower-blue': #265f81,
+);
+
+$color-brand:(
+  'deep-ruby': #b3000c,
+  'red': #d5000e,
+  'light-ruby': #ff574d,
+  'deep-azure': #005ce6,
+  'azure': #13a3f7,
+  'light-azure': #61c5ff,
+  'turquoise': #00c2b4,
+  'emerald': #2db329,
+  'amber': #ffaa00,
+  'amethyst': #a352cc,
+  'dark-graphite': #26292c,
+  'graphite': #666,
+  'light-graphite': #f6f5f5,
+  'black': #00111f,
+  'night': #161D2D,
+  'empathy': #A44141,
+  'friendship': #257F7F,
+  'positivity': #D07A3E,
+  'growth': #38A568,
+  'optimism': #D7A82B,
+  'knowledge': #2F59BC,
+  'inclusion': #814DC4,
+  'trust': #138AA4,
+  'white': #fff,
+  'clarity-canvas': #f3f2ef,
+  'clarity-midnight': #0A1226,
+  'clarity-stormcloud': #d0d0d0,
+  'clarity-overcast': #dfdfdf,
+  'clarity-cloud': #f4f4f4,
+  'clarity-mist': #fafafa
+);
+
+$color-brand-btn-hover:(
+  'black': #00213C,
+  'night': #1B2949,
+  'empathy': #C76262,
+  'friendship': #3C9A9A,
+  'positivity': #E49157,
+  'growth': #4DBA7E,
+  'optimism': #EABA3B,
+  'knowledge': #3F6BD3,
+  'inclusion': #9A69DB,
+  'trust': #21A2BE,
+);
+
+$color-brand-btn-focus:(
+  'black': #00111f,
+  'night': #00111F,
+  'empathy': #A44141,
+  'friendship': #257F7F,
+  'positivity': #AE5E25,
+  'growth': #23814D,
+  'optimism': #C5971E,
+  'knowledge': #2046A2,
+  'inclusion': #6A38AB,
+  'trust': #0B7C95,
+);
+
+$color-brand-btn-secondary-hover:(
+  'empathy': #F9ECEC,
+  'friendship': #DCF5F5,
+  'positivity': #FFE6D5,
+  'growth': #DBF8E8,
+  'optimism': #F8EDD3,
+  'knowledge': #E0E9FF,
+  'inclusion': #F0E6FD,
+  'trust': #B5E7F1,
+);
+
+$color-brand-btn-secondary-focus:(
+  'black': #13A3F7,
+  'night': #13A3F7,
+  'empathy': #C76262,
+  'friendship': #3C9A9A,
+  'positivity': #D07A3E,
+  'growth': #38A568,
+  'optimism': #EABA3B,
+  'knowledge': #2F59BC,
+  'inclusion': #814DC4,
+  'trust': #138AA4,
+);
+
+$color-form:(
+  'white': #fff,
+  'whisper' : #f9f7fa,
+  'dusty-gray' : #979797,
+  'azure-radiance' : #0072ed,
+  'gallery' : #ececec,
+  'success' : #2ac371
+);
+
+// breakpoints
+$breakpoints:(
+  sm: 600px,
+  md: 900px,
+  lg: 1200px,
+  xlg: 1500px
+);
+
+// Grid gutter - (padding/margin) applied to rows & cols
+// NOTE: at 'md' breakpoint, 1.5 multiplier is applied to gutter$grid-gutter: 20px;
+// grid spacing modifiers
+$grid-gutter-spaced: 1.5;
+$grid-gutter-ultra-spaced: 2;
+$grid-gutter-reduced: .5;
+$grid-gutter-ultra-reduced: .25;
+$grid-gutter-modifier: 1.5;
+$grid-gutter: 20px;
+
+// Grid spacing
+$grid-spacing:(
+  ultra-reduced: .25,
+  reduced: .5,
+  base: 1,
+  spaced: 1.5,
+  ultra-spaced: 2
+);
+	
+// spacing
+$spacing:(
+  xsm: 20px,
+  sm: 30px,
+  md: 40px,
+  lg: 50px,
+  xlg: 60px
+);
+
+$content-max-width: 1480px; // max width of content (not including padding)
+$wrapper-max-width: $content-max-width + (map-get($spacing, xlg) * 2); // max width of wrapper
+
+// container spacing
+$container-spacing:(
+  ultra-reduced: .5,
+  reduced: 1,
+  base: 1.5,
+  spaced: 2,
+  ultra-spaced: 2.5
+);
+
+// layer spacing
+$layer-spacing:(
+  ultra-reduced: .5, 
+  reduced: 1, 
+  base: 1.5, 
+  spaced: 2, 
+  ultra-spaced: 2.5 
+);
+
+// transition speed
+$transition-speed: .25s;
+
+// z-level indexes
+$z-index-base: 1;
+$z-index-header: 100;
+$z-index-overlay: 1000;
+
+// fonts
+$font-source-sans-pro: 'Source Sans Pro', 'Helvetica', sans-serif;
+$font-montserrat: 'Montserrat', sans-serif;
+
+// font assignments
+$font-primary: $font-source-sans-pro;
+$font-secondary: $font-montserrat;
+
+// typography
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+$base-font-family: $font-primary;
+$base-font-size: 16px;
+$base-line-height: 1.5;
+$base-background-color: map-get($color-brand, 'white');
+$base-font-color: map-get($color-brand, 'black');
+
+// heading
+$heading-font-family: $font-secondary;
+$heading-font-color: map-get($color-brand, 'black');

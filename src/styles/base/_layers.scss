@@ -1,0 +1,89 @@
+.layer {
+  @include size(padding, (map-get($spacing, xsm) * map-get($layer-spacing, base)) 0);
+  position: relative;
+
+  @include breakpoint(sm) {
+    @include size(padding, (map-get($spacing, sm) * map-get($layer-spacing, base)) 0);
+  }
+  @include breakpoint(md) {
+    @include size(padding, (map-get($spacing, md) * map-get($layer-spacing, base)) 0);
+  }
+  @include breakpoint(lg) {
+    @include size(padding, (map-get($spacing, lg) * map-get($layer-spacing, base)) 0);
+  }
+  @include breakpoint(xlg) {
+    @include size(padding, (map-get($spacing, xlg) * map-get($layer-spacing, base)) 0);
+  }
+
+  &.--ultra-reduced {
+    @include size(padding, (map-get($spacing, xsm) * map-get($layer-spacing, ultra-reduced)) 0);
+  
+    @include breakpoint(sm) {
+      @include size(padding, (map-get($spacing, sm) * map-get($layer-spacing, ultra-reduced)) 0);
+    }
+    @include breakpoint(md) {
+      @include size(padding, (map-get($spacing, md) * map-get($layer-spacing, ultra-reduced)) 0);
+    }
+    @include breakpoint(lg) {
+      @include size(padding, (map-get($spacing, lg) * map-get($layer-spacing, ultra-reduced)) 0);
+    }
+    @include breakpoint(xlg) {
+      @include size(padding, (map-get($spacing, xlg) * map-get($layer-spacing, ultra-reduced)) 0);
+    }
+  }
+
+  &.--reduced {
+    @include size(padding, (map-get($spacing, xsm) * map-get($layer-spacing, reduced)) 0);
+  
+    @include breakpoint(sm) {
+      @include size(padding, (map-get($spacing, sm) * map-get($layer-spacing, reduced)) 0);
+    }
+    @include breakpoint(md) {
+      @include size(padding, (map-get($spacing, md) * map-get($layer-spacing, reduced)) 0);
+    }
+    @include breakpoint(lg) {
+      @include size(padding, (map-get($spacing, lg) * map-get($layer-spacing, reduced)) 0);
+    }
+    @include breakpoint(xlg) {
+      @include size(padding, (map-get($spacing, xlg) * map-get($layer-spacing, reduced)) 0);
+    }
+  }
+
+  &.--spaced {
+    @include size(padding, (map-get($spacing, xsm) * map-get($layer-spacing, spaced)) 0);
+  
+    @include breakpoint(sm) {
+      @include size(padding, (map-get($spacing, sm) * map-get($layer-spacing, spaced)) 0);
+    }
+    @include breakpoint(md) {
+      @include size(padding, (map-get($spacing, md) * map-get($layer-spacing, spaced)) 0);
+    }
+    @include breakpoint(lg) {
+      @include size(padding, (map-get($spacing, lg) * map-get($layer-spacing, spaced)) 0);
+    }
+    @include breakpoint(xlg) {
+      @include size(padding, (map-get($spacing, xlg) * map-get($layer-spacing, spaced)) 0);
+    }
+  }
+
+  &.--ultra-spaced {
+    @include size(padding, (map-get($spacing, xsm) * map-get($layer-spacing, ultra-spaced)) 0);
+  
+    @include breakpoint(sm) {
+      @include size(padding, (map-get($spacing, sm) * map-get($layer-spacing, ultra-spaced)) 0);
+    }
+    @include breakpoint(md) {
+      @include size(padding, (map-get($spacing, md) * map-get($layer-spacing, ultra-spaced)) 0);
+    }
+    @include breakpoint(lg) {
+      @include size(padding, (map-get($spacing, lg) * map-get($layer-spacing, ultra-spaced)) 0);
+    }
+    @include breakpoint(xlg) {
+      @include size(padding, (map-get($spacing, xlg) * map-get($layer-spacing, ultra-spaced)) 0);
+    }
+  }
+
+  &.--no-spaced{
+    @include size(padding, 0);
+  }
+}

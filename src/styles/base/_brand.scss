@@ -1,0 +1,260 @@
+.deep-ruby {
+  color: map-get($color-brand, 'deep-ruby');
+}
+
+.--bg-deep-ruby {
+  background-color: map-get($color-brand, 'deep-ruby');
+}
+
+.red {
+  color: map-get($color-brand, 'red');
+}
+
+.--bg-red {
+  background-color: map-get($color-brand, 'red');
+}
+
+.light-ruby {
+  color: map-get($color-brand, 'light-ruby');
+}
+
+.--bg-light-ruby {
+  background-color: map-get($color-brand, 'light-ruby');
+}
+
+.deep-azure {
+  color: map-get($color-brand, 'deep-azure');
+}
+
+.--bg-deep-azure {
+  background-color: map-get($color-brand, 'deep-azure');
+}
+
+.azure {
+  color: map-get($color-brand, 'azure');
+}
+
+.--bg-azure {
+  background-color: map-get($color-brand, 'azure');
+}
+
+.light-azure {
+  color: map-get($color-brand, 'light-azure');
+}
+
+.--bg-light-azure {
+  background-color: map-get($color-brand, 'light-azure');
+}
+
+.turquoise {
+  color: map-get($color-brand, 'turquoise');
+}
+
+.--bg-turquoise {
+  background-color: map-get($color-brand, 'turquoise');
+}
+
+.emerald {
+  color: map-get($color-brand, 'emerald');
+}
+
+.--bg-emerald {
+  background-color: map-get($color-brand, 'emerald');
+}
+
+.amber {
+  color: map-get($color-brand, 'amber');
+}
+
+.--bg-amber {
+  background-color: map-get($color-brand, 'amber');
+}
+
+.amethyst {
+  color: map-get($color-brand, 'amethyst');
+}
+
+.--bg-amethyst {
+  background-color: map-get($color-brand, 'amethyst');
+}
+
+.dark-graphite {
+  color: map-get($color-brand, 'dark-graphite');
+}
+
+.--bg-dark-graphite {
+  background-color: map-get($color-brand, 'dark-graphite');
+}
+
+.graphite {
+  color: map-get($color-brand, 'graphite');
+}
+
+.--bg-graphite {
+  background-color: map-get($color-brand, 'graphite');
+}
+
+.light-graphite {
+  color: map-get($color-brand, 'light-graphite');
+}
+
+.--bg-light-graphite {
+  background-color: map-get($color-brand, 'light-graphite');
+}
+
+.black {
+  color: map-get($color-brand, 'black');
+}
+
+.--fg-dark{
+  color: map-get($color-brand, 'black');
+}
+
+.--bg-black {
+  background-color: map-get($color-brand, 'black');
+}
+
+.night {
+  color: map-get($color-brand, 'night');
+}
+
+.--bg-night {
+  background-color: map-get($color-brand, 'night');
+}
+
+.empathy {
+  color: map-get($color-brand, 'empathy');
+}
+
+.--bg-empathy {
+  background-color: map-get($color-brand, 'empathy');
+}
+
+.friendship {
+  color: map-get($color-brand, 'friendship');
+}
+
+.--bg-friendship {
+  background-color: map-get($color-brand, 'friendship');
+}
+
+.positivity {
+  color: map-get($color-brand, 'positivity');
+}
+
+.--bg-positivity {
+  background-color: map-get($color-brand, 'positivity');
+}
+
+.growth {
+  color: map-get($color-brand, 'growth');
+}
+
+.--bg-growth {
+  background-color: map-get($color-brand, 'growth');
+}
+
+.optimism {
+  color: map-get($color-brand, 'optimism');
+}
+
+.--bg-optimism {
+  background-color: map-get($color-brand, 'optimism');
+}
+
+.knowledge {
+  color: map-get($color-brand, 'knowledge');
+}
+
+.--bg-knowledge {
+  background-color: map-get($color-brand, 'knowledge');
+}
+
+.inclusion {
+  color: map-get($color-brand, 'inclusion');
+}
+
+.--bg-inclusion {
+  background-color: map-get($color-brand, 'inclusion');
+}
+
+.trust {
+  color: map-get($color-brand, 'trust');
+}
+
+.--bg-trust {
+  background-color: map-get($color-brand, 'trust');
+}
+
+.white {
+    color: map-get($color-brand, 'white');
+}
+
+.--fg-light{
+  color: map-get($color-brand, 'white');
+
+  .hero-banner & {
+    color: map-get($color-brand, 'black');
+
+    @include breakpoint(md) {
+      color: map-get($color-brand, 'white');
+    }
+  }
+}
+
+.--bg-white {
+  background-color: map-get($color-brand, 'white');
+}
+
+.--bg-layer-gray {
+  background-color: map-get($color-form, 'whisper');
+}
+
+.clarity-canvas {
+  color: map-get($color-brand, 'clarity-canvas');
+}
+
+.--bg-clarity-canvas {
+  background-color: map-get($color-brand, 'clarity-canvas');
+}
+
+.clarity-midnight {
+  color: map-get($color-brand, 'clarity-midnight');
+}
+
+.--bg-clarity-midnight {
+  background-color: map-get($color-brand, 'clarity-midnight');
+}
+
+.clarity-stormcloud {
+  color: map-get($color-brand, 'clarity-stormcloud');
+}
+
+.--bg-clarity-stormcloud {
+  background-color: map-get($color-brand, 'clarity-stormcloud');
+}
+
+.clarity-overcast {
+  color: map-get($color-brand, 'clarity-overcast');
+}
+
+.--bg-clarity-overcast {
+  background-color: map-get($color-brand, 'clarity-overcast');
+}
+
+.clarity-cloud {
+  color: map-get($color-brand, 'clarity-cloud');
+}
+
+.--bg-clarity-cloud {
+  background-color: map-get($color-brand, 'clarity-cloud');
+}
+
+.clarity-mist {
+  color: map-get($color-brand, 'clarity-mist');
+}
+
+.--bg-clarity-mist {
+  background-color: map-get($color-brand, 'clarity-mist');
+}
+

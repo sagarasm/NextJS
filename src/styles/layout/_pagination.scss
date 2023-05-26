@@ -1,0 +1,78 @@
+.pagination{
+    &__container{
+        display: flex;
+        list-style-type: none;
+        justify-content: center;
+        @include size(margin-bottom, 20px);
+    }
+    &__item{
+        &:last-child{
+          @include size(margin-right, 0);
+          a{
+            @include size(margin-right, 0);
+          }
+        }
+        a{
+          @include size(padding, 8px 10px);
+          @include size(margin, auto 4px);
+          @include size(min-width, 32px);
+          @include size(border-width, 2px);
+          @include size(margin-left, -6px);
+          @include size(line-height, 20px);
+          text-align: center;
+          display: flex;
+          box-sizing: border-box;
+          align-items: center;
+          border-style: solid;
+          color: map-get($color-brand, 'deep-azure');
+          border-color: map-get($color-brand, 'graphite');
+          &:hover {
+            cursor: pointer;
+            background-color: map-get($color-brand, 'light-graphite');
+          }
+          &:focus{
+            box-shadow: 0 0 0 3px rgb(210 0 33 / 25%);
+            outline: none;
+          }
+          @media screen and (max-width: 400px) {
+            @include size(padding, 5px 8px);
+            @include fontSize(10);
+            min-width: auto;
+          }
+          @include breakpoint(md){
+            @include size(padding, 8px 12px);
+          }
+        }
+
+         &.selected {
+          a{
+            background-color: map-get($color-brand, 'deep-azure');
+            color: map-get($color-brand, 'white');
+          }
+         }
+    
+        &.disabled {
+          display: none;
+        }
+
+        &.dots a:hover {
+          background-color: transparent;
+          cursor: default;
+        }
+        .arrow{
+          .desktop__label{
+            display: none;
+            @include breakpoint(sm){
+              display: block;
+            }
+          }
+          .mobile__label{
+            display: block;
+            @include breakpoint(sm){
+              display: none;
+            }
+          }
+        }
+      }
+  }
+  

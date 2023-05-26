@@ -1,0 +1,29 @@
+.link {
+  @include link();
+}
+.skip-link {
+  //TODO: revisit to match design requirements
+  color: map-get($color-brand, 'white');
+  background-color: map-get($color-brand, 'deep-azure');
+  border-radius: 0.9rem;
+  display: inline-block;
+  font-size: 1.6rem;
+  height: auto;
+  left: 50%;
+  outline: none;
+  padding: 1.2rem;
+  position: fixed;
+  -webkit-transform: translate(-50%);
+  transform: translate(-50%);
+  top: -100px;
+  width: auto;
+  z-index: 101;
+  @include transition(top 0.3s ease-out);
+  &:focus {
+    top: 12px;
+    @include transition(top 0.3s ease-out);
+  }
+  &:hover {
+    background-color: map-get($color-brand, 'azure');
+  }
+}

@@ -1,0 +1,65 @@
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+
+  img {
+    max-width: 75px;
+  }
+
+  nav {
+    display: flex;
+    margin-top: 20px;
+    a {
+      text-decoration: none;
+      color: #343a40;
+      padding: 0.5rem;
+    }
+  }
+}
+
+// BreadCrumb For Simple Hero & Hero Banner
+.breadcrumb {
+  @include size(margin-bottom, 40px);
+  display: flex;
+  flex-wrap: wrap;
+
+  &:empty {
+    display: none;
+  }
+
+  > li {
+    font-weight: $font-weight-normal;
+    @include fontSize(18);
+    @include size(line-height, 23px);
+    display: flex;
+    align-items: center;
+    @include size(letter-spacing, -0.05px);
+    text-transform: uppercase;
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &::after {
+      @include size(padding, 8px 4px 8px 8px);
+      content: '/\00a0';
+      transform: rotateZ(15deg);
+    }
+
+    &:last-child {
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &.--bd-black {
+    > li {
+      color: map-get($color-brand, 'black');
+    }
+    a {
+      color: map-get($color-brand, 'black');
+    }
+  }
+}
