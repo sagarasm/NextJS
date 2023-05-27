@@ -27,9 +27,13 @@ const BlogPost = () => {
   }
 
   return (
-    <div className='container'>
-      <h1>{post.name}</h1>
-      <p>{post.email}</p>
+    <div className="layer">
+      <div className="wrapper">
+        <div className="container">
+          <h1>{post.name}</h1>
+          <p>{post.email}</p>
+        </div>
+      </div>
     </div>
   );
 };
